@@ -18,9 +18,28 @@ public class PhotoController {
             
         }
 
+
     
      
     };
+
+    //返回所有图片
+    @GetMapping("/photos")
+    public Collection<Photo> photos() {
+        return photoRepos.values();
+    }
+
+    //返回指定id的图片
+    @GetMapping("/photos/{id}")
+    public Photo photo(@PathVariable String id) {
+        return photoRepos.get(id);
+    }
+
+    //删除指定id的图片
+    @DeleteMapping("/photos/{id}")
+    public void deletePhoto(@PathVariable String id) {
+        photoRepos.remove(id);
+    }
 
 
 
